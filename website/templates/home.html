@@ -1,0 +1,18 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+<h1 align="center">Transactions</h1>
+<ul class="list-group list-group-flush" id="transactions">
+  {% for transaction in transactions %}
+  <li class="list-group-item">
+    <h3>Sender IBAN:  {{ transaction.sender }}</h3>
+    <h4>Amount sent:  {{transaction.amount}} {{transaction.currency}}</h4>
+    <p>Sent at: {{transaction.date}}</p>
+    <a href={{'/details?transaction='+transaction.id|string}}>
+      <button type="button" class="btn btn-link">
+        Details
+      </button>
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}
